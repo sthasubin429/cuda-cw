@@ -1,0 +1,38 @@
+Qn 5
+    1 ---  B = A + C
+    2 --- B = C + D
+    3 --- C = B + D
+    Identification of dependency
+        eq 3 has flow dependency with eq 2 and eq 1 as value of B must be calculate before eq 3 can be executed.
+
+
+        eq(1, 2) and 3 have anti dependency as eq 1 and 2 requires value of C is calculated at 3rd step.
+        So, eq 1 and 2 have to wait for eq 3 to be computed to calculate the value of C and use it in 1 and 2.
+
+
+        eq 1 and 2 have output dependency as the value of B changes after each step.
+        Changing the order of eq 1 and 2 will affect the final output value of B.
+        this will also affect the value of C as the value of C depends on value of B.
+
+    Part 2
+        Only reordering the statements does not produce same values for B and C as in original statements
+        as the value of B truly depends on C and the value of C truly depends on B.
+
+    Part 3
+        C = B_old + D
+        B_new = A + C
+        B = C + D
+
+        This solves arrangement of statements removes anti dependencies and output dependency.
+        This Also enables statement 2 and 3 to be executed in parallel.
+
+        Anti dependency is solved as no value is updated after it is required.
+        Output dependency is solved as no value is updated once it is computed.
+
+        Flow Dependency cannot be solved as flow dependencies cannot be removed without Changing the purpose of the program.
+
+        Alternate:
+            B_temp = A + C_old
+            C = B_temp + D
+            B = C + D
+            **Does not allow statements to be executed in parallel    
