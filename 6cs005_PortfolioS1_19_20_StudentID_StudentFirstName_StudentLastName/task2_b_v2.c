@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <time.h>
 
-#define matSize 150
+#define matSize 1000
 
 int A[matSize][matSize], B[matSize][matSize], result[matSize][matSize];
 
@@ -29,33 +29,33 @@ int time_difference(struct timespec *start, struct timespec *finish,
 
 typedef struct parameters
 {
-    int x, y;
+    int x;
 } args;
 
 void *mult(void *arg)
 {
-
     args *p = arg;
-
-    //Calculating Each Element in Result Matrix Using Passed Arguments
-    int cache = 0;
-    for (int a = 0; a < matSize; a++)
+    for (int y = 0; y < matSize; y++)
     {
-        cache += A[p->x][a] * B[a][p->y];
+        //Calculating Each Element in Result Matrix Using Passed Arguments
+        int cache = 0;
+        for (int a = 0; a < matSize; a++)
+        {
+            cache += A[p->x][a] * B[a][y];
+        }
+        result[p->x][y] = cache;
     }
-    result[p->x][p->y] = cache;
+
     //End Of Thread
     pthread_exit(0);
 }
 
-int matMuil_multiThreading(int maxThread)
+float matMuil_multiThreading(int maxThread)
 {
     struct timespec start, finish;
     long long int difference;
     clock_gettime(CLOCK_MONOTONIC, &start);
     ///////////////////////
-
-    //Multiply Matrices Using Threads - - - - - - - - - - - - - - - - - - - -//
 
     //Defining Threads
     pthread_t thread[maxThread];
@@ -64,37 +64,31 @@ int matMuil_multiThreading(int maxThread)
     int thread_number = 0;
 
     //Defining p For Passing Parameters To Function As Struct
-    args p[matSize * matSize];
+    args p[matSize];
 
     for (int x = 0; x < matSize; x++)
     {
-        for (int y = 0; y < matSize; y++)
+        //Initializing Parameters For Passing To Function
+        p[thread_number].x = x;
+
+        //Status For Checking Errors
+        int status;
+
+        //Create Specific Thread For Each Element In Result Matrix
+        status = pthread_create(&thread[thread_number], NULL, mult, (void *)&p[thread_number]);
+
+        //Check For Error
+        if (status != 0)
         {
-
-            //Initializing Parameters For Passing To Function
-            p[thread_number].x = x;
-            p[thread_number].y = y;
-
-            //Status For Checking Errors
-            int status;
-
-            //Create Specific Thread For Each Element In Result Matrix
-            status = pthread_create(&thread[thread_number], NULL, mult, (void *)&p[thread_number]);
-
-            //Check For Error
-            if (status != 0)
-            {
-                printf("Error In Threads");
-                exit(0);
-            }
-
-            thread_number++;
+            printf("Error In Threads");
+            exit(0);
         }
-    }
 
+        thread_number++;
+    }
     //Wait For All Threads Done - - - - - - - - - - - - - - - - - - - - - - //
 
-    for (int z = 0; z < (matSize * matSize); z++)
+    for (int z = 0; z < (matSize); z++)
         pthread_join(thread[z], NULL);
 
     //Print Multiplied Matrix (Result) - - - - - - - - - - - - - - - - - - -//
@@ -109,8 +103,7 @@ int matMuil_multiThreading(int maxThread)
     //     printf("\n\n");
     // }
 
-    //printf(" ---> Time Elapsed : %.6f Sec\n\n", (double)(time(NULL) - start));
-
+    ///////////////////////////////////
     clock_gettime(CLOCK_MONOTONIC, &finish);
     time_difference(&start, &finish, &difference);
     printf("run lasted %lldns or %9.5lfs\n", difference, difference / 1000000000.0);
@@ -121,23 +114,23 @@ int matMuil_multiThreading(int maxThread)
     // for (int z = 0; z < thread_number; z++)
     //     printf(" - Thread %d ID : %d\n", z + 1, (int)thread[z]);
 
-    return 0;
+    return difference / 1000000000.0;
 }
 
 int main(int argc, char const *argv[])
 {
-    int maxThread = matSize * matSize;
+    int maxThread = matSize;
     //the values of the matrix are given random values between 0 and 70.
     //time taken to assign this value is not added to the final time.
     for (int a = 0; a < matSize; a++)
     {
         for (int b = 0; b < matSize; b++)
         {
-            A[a][b] = rand() % 10;
-            B[a][b] = rand() % 10;
+            A[a][b] = rand() % 70;
+            B[a][b] = rand() % 70;
         }
     }
-    matMuil_multiThreading(maxThread);
+    printf("%9.5lf\n", matMuil_multiThreading(maxThread));
 
     /* code */
     return 0;

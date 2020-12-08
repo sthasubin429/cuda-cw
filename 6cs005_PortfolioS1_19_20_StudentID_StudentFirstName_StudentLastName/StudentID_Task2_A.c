@@ -114,13 +114,13 @@ int matMul_Improved()
     //Set same values for all to form a square matrix
 
     //increasing the value above 900 may cause segmentation Fault.
-    // int M = 800;
-    // int N = 750;
-    // int P = 850;
+    int M = 800;
+    int N = 750;
+    int P = 850;
 
-    int M = 4;
-    int N = 3;
-    int P = 3;
+    // int M = 4;
+    // int N = 3;
+    // int P = 3;
 
     int a[N][P], b[P][M], c[N][M];
     int i, j, k;
@@ -143,13 +143,13 @@ int matMul_Improved()
         }
     }
 
-    for (int p = 0; p < N; p++)
-    {
-        for (int q = 0; q < M; q++)
-        {
-            c[p][q] = 0;
-        }
-    }
+    // for (int p = 0; p < N; p++)
+    // {
+    //     for (int q = 0; q < M; q++)
+    //     {
+    //         c[p][q] = 0;
+    //     }
+    // }
 
     //Calculates time for computing and prining the value only
     clock_gettime(CLOCK_MONOTONIC, &start);
@@ -165,15 +165,15 @@ int matMul_Improved()
                 cache = cache + a[i][k] * b[k][j];
             }
             c[i][j] = cache;
-            printf("\nThe results is…\n");
-            for (int p = 0; p < N; p++)
-            {
-                for (int q = 0; q < M; q++)
-                {
-                    printf("%d  ", c[p][q]);
-                }
-                printf("\n");
-            }
+            // printf("\nThe results is…\n");
+            // for (int p = 0; p < N; p++)
+            // {
+            //     for (int q = 0; q < M; q++)
+            //     {
+            //         printf("%d  ", c[p][q]);
+            //     }
+            //     printf("\n");
+            //}
         }
     }
     //Uncomment lines bleow to print the value of matrix A and B
