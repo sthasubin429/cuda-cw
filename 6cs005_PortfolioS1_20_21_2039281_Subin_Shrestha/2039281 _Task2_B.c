@@ -46,6 +46,7 @@ void *mult(void *arg)
     result[p->x][p->y] = cache;
     //End Of Thread
     pthread_exit(0);
+    
 }
 
 int matMuil_multiThreading(int maxThread)
@@ -68,6 +69,7 @@ int matMuil_multiThreading(int maxThread)
 
     for (int x = 0; x < matSize; x++)
     {
+
         for (int y = 0; y < matSize; y++)
         {
 
@@ -126,7 +128,7 @@ int matMuil_multiThreading(int maxThread)
 
 int main(int argc, char const *argv[])
 {
-    int maxThread = matSize * matSize;
+    int maxThread = matSize * matSize + 100;
     //the values of the matrix are given random values between 0 and 70.
     //time taken to assign this value is not added to the final time.
     for (int a = 0; a < matSize; a++)

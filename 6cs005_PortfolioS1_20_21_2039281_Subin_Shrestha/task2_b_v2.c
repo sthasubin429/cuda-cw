@@ -1,5 +1,5 @@
 /**
- * cc -o task2_B StudentID_Task2_B.c -lrt -pthread
+ * cc -o task2_B2 task2_b_v2.c -lrt -pthread
  * 
 */
 #include <stdio.h>
@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <time.h>
 
-#define matSize 1000
+#define matSize 3000
 
 int A[matSize][matSize], B[matSize][matSize], result[matSize][matSize];
 

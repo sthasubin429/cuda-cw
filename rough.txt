@@ -1,4 +1,4 @@
-Qn 5
+Task 1 Qn 5
     1 ---  B = A + C
     2 --- B = C + D
     3 --- C = B + D
@@ -35,4 +35,12 @@ Qn 5
             B_temp = A + C_old
             C = B_temp + D
             B = C + D
-            **Does not allow statements to be executed in parallel    
+            **Does not allow statements to be executed in parallel
+Task 1 Qn 6
+    Code on left(first code) gives random values as output each time it is run.
+    Outputs on running the code 5 times are:
+        188444, 208898 ,193965, 217172, 242647
+
+    Code on the right(second code) gives a constant output of 500000 each time it is run.
+
+    
