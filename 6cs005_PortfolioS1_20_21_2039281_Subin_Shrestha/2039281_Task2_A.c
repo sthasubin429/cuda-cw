@@ -1,3 +1,10 @@
+/*
+To Compile:
+    cc -o task2_A 2039281_Task2_A.c
+To Run:
+    ./task2_A > t2_A_output.txt
+*/
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -118,10 +125,6 @@ int matMul_Improved()
     int N = 750;
     int P = 850;
 
-    // int M = 4;
-    // int N = 3;
-    // int P = 3;
-
     int a[N][P], b[P][M], c[N][M];
     int i, j, k;
 
@@ -142,14 +145,6 @@ int matMul_Improved()
             b[i][j] = rand() % 70;
         }
     }
-
-    // for (int p = 0; p < N; p++)
-    // {
-    //     for (int q = 0; q < M; q++)
-    //     {
-    //         c[p][q] = 0;
-    //     }
-    // }
 
     //Calculates time for computing and prining the value only
     clock_gettime(CLOCK_MONOTONIC, &improverd_start);

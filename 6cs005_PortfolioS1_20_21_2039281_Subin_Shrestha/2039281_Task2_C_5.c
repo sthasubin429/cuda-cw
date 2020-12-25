@@ -1,3 +1,4 @@
+// cc -o task2_C_5 2039281_Task2_C_5.c -lcrypt -lpthread
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -5,9 +6,11 @@
 #include <string.h>
 #include <crypt.h>
 #include <time.h>
+#include <stdbool.h>
 
 int count1 = 0;
 int count2 = 0;
+bool found = false;
 
 int time_difference(struct timespec *start, struct timespec *finish,
                     long long int *difference)
@@ -52,6 +55,7 @@ void kernel_function_1(char *salt_and_encrypted)
                 if (strcmp(salt_and_encrypted, enc) == 0)
                 {
                     printf("#%-8d%s %s\n", count1, plain, enc);
+                    found = true;
                     pthread_exit(0);
                     return; //uncomment this line if you want to speed-up the running time, program will find you the cracked password only without exploring all possibilites
                 }
@@ -59,6 +63,12 @@ void kernel_function_1(char *salt_and_encrypted)
                 // else{
                 //   printf("%-8d%s %s\n", count, plain, enc);
                 // }
+                if (found)
+                {
+                    printf("Solution Found \n");
+                    pthread_exit(0);
+                    return;
+                }
             }
         }
     }
@@ -85,12 +95,19 @@ void kernel_function_2(char *salt_and_encrypted)
                 if (strcmp(salt_and_encrypted, enc) == 0)
                 {
                     printf("#%-8d%s %s\n", count2, plain, enc);
+                    found = true;
                     pthread_exit(0);
                     return; //uncomment this line if you want to speed-up the running time, program will find you the cracked password only without exploring all possibilites
                 }
                 // else{
                 //   printf("%-8d%s %s\n", count, plain, enc);
                 // }
+                if (found)
+                {
+                    printf("Solution Found \n");
+                    pthread_exit(0);
+                    return;
+                }
             }
         }
     }
@@ -98,29 +115,35 @@ void kernel_function_2(char *salt_and_encrypted)
 
 int main(int argc, char const *argv[])
 {
-    //Variables
-    pthread_t thread_1, thread_2;
+    for (int i = 0; i < 10; i++)
+    {
+        //Variables
+        pthread_t thread_1, thread_2;
 
-    char pass[] = "$6$AS$dsuosO.xUl5x09F/5UIGxteOdkhrZBlvjzkLOdIs3OuUJaZvtLLJljbZR/OehQzY5RmUxknaPu2Cl4Nyecp27/";
-    //Starting Clock
-    struct timespec start,
-        finish;
-    long long int difference;
-    clock_gettime(CLOCK_MONOTONIC, &start);
+        char pass[] = "$6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0";
+        //Starting Clock
+        struct timespec start, finish;
+        long long int difference;
+        clock_gettime(CLOCK_MONOTONIC, &start);
 
-    //Thread Code
-    pthread_create(&thread_1, NULL, (void *(*)(void *))kernel_function_1, &pass);
-    pthread_create(&thread_2, NULL, (void *(*)(void *))kernel_function_2, &pass);
+        //Thread Code
+        pthread_create(&thread_1, NULL, (void *(*)(void *))kernel_function_1, &pass);
+        pthread_create(&thread_2, NULL, (void *(*)(void *))kernel_function_2, &pass);
 
-    pthread_join(thread_1, NULL);
-    pthread_join(thread_2, NULL);
-    printf("%d solutions explored\n", count1);
-    printf("%d solutions explored\n", count2);
+        pthread_join(thread_1, NULL);
+        pthread_join(thread_2, NULL);
+        printf("%d solutions explored\n", count1);
+        printf("%d solutions explored\n", count2);
 
-    //Stopping Clock
-    clock_gettime(CLOCK_MONOTONIC, &finish);
-    time_difference(&start, &finish, &difference);
-    printf("run lasted %lldns or %9.5lfs\n", difference, difference / 1000000000.0);
+        //Stopping Clock
+        clock_gettime(CLOCK_MONOTONIC, &finish);
+        time_difference(&start, &finish, &difference);
+        printf("run no %d lasted %lldns or %9.5lfs\n", i, difference, difference / 1000000000.0);
+        count1 = 0;
+        count2 = 0;
+        found = false;
+        printf("##############################################\n");
+    }
 
     /* code */
     return 0;

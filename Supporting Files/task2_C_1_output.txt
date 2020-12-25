@@ -1,0 +1,40 @@
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 0 lasted 15245697600ns or  15.24570s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 1 lasted 14956715400ns or  14.95672s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 2 lasted 14666665800ns or  14.66667s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 3 lasted 14727030900ns or  14.72703s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 4 lasted 14896223900ns or  14.89622s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 5 lasted 14615379200ns or  14.61538s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 6 lasted 14605105100ns or  14.60511s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 7 lasted 14564398400ns or  14.56440s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 8 lasted 14566693700ns or  14.56669s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+5521 solutions explored
+run no 9 lasted 14576942100ns or  14.57694s
+##############################################

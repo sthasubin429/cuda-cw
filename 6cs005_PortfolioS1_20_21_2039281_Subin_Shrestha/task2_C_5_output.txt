@@ -1,0 +1,60 @@
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5512 solutions explored
+run no 0 lasted 16474176400ns or  16.47418s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5524 solutions explored
+run no 1 lasted 16336553600ns or  16.33655s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5514 solutions explored
+run no 2 lasted 16525805600ns or  16.52581s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5528 solutions explored
+run no 3 lasted 16477050400ns or  16.47705s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5517 solutions explored
+run no 4 lasted 16328942700ns or  16.32894s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5533 solutions explored
+run no 5 lasted 16291286600ns or  16.29129s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5516 solutions explored
+run no 6 lasted 16455955100ns or  16.45596s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5533 solutions explored
+run no 7 lasted 16528519200ns or  16.52852s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5527 solutions explored
+run no 8 lasted 16177830300ns or  16.17783s
+##############################################
+#5521    CD20 $6$AS$XRTYYGrcMb5RzgzrzOKTPEgXxdaQ6qngsLOS.ieQmWC2sbZ6MvFwyOdlPT1ryf4zwYSBKqf8DDWlHMZaPY/ry0
+Solution Found 
+5521 solutions explored
+5512 solutions explored
+run no 9 lasted 16275702500ns or  16.27570s
+##############################################

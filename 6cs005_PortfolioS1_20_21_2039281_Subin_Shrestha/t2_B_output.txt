@@ -1,0 +1,12 @@
+Number of Threads Used: 1500 
+Time Taken for run 0 =  14.69905
+Time Taken for run 1 =  14.74464
+Time Taken for run 2 =  16.05465
+Time Taken for run 3 =  13.68569
+Time Taken for run 4 =  13.49028
+Time Taken for run 5 =  13.51400
+Time Taken for run 6 =  16.39930
+Time Taken for run 7 =  16.23843
+Time Taken for run 8 =  13.92603
+Time Taken for run 9 =  15.46304
+Average Taken  14.82151
