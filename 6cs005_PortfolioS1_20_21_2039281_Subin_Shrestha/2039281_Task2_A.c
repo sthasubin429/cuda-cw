@@ -19,8 +19,8 @@ int time_difference(struct timespec *start, struct timespec *finish,
 }
 int matMul_Original()
 {
-    struct timespec start, finish;
-    long long int difference;
+    struct timespec original_start, original_finish;
+    long long int original_difference;
 
     //These M,N and P defines row and column of matrices.
     //Update this value to change the size of matrices to be computed.
@@ -53,14 +53,13 @@ int matMul_Original()
     }
 
     //Calculates time for computing and prining the value only
-    clock_gettime(CLOCK_MONOTONIC, &start);
+    clock_gettime(CLOCK_MONOTONIC, &original_start);
 
     for (i = 0; i < N; i++)
     {
         for (j = 0; j < M; j++)
         {
             c[i][j] = 0;
-            int cache = 0;
             for (k = 0; k < P; k++)
             {
                 c[i][j] = c[i][j] + a[i][k] * b[k][j];
@@ -89,6 +88,7 @@ int matMul_Original()
     // }
 
     //Prints the final resultant matrix after multiplication
+    //Uncomment lines below to print the results.
     // printf("\nThe results is…\n");
     // for (i = 0; i < N; i++)
     // {
@@ -99,15 +99,15 @@ int matMul_Original()
     //     printf("\n");
     // }
 
-    clock_gettime(CLOCK_MONOTONIC, &finish);
-    time_difference(&start, &finish, &difference);
-    printf("Execution time of Original Algorithm %lldns or %9.5lfs\n", difference, difference / 1000000000.0);
+    clock_gettime(CLOCK_MONOTONIC, &original_finish);
+    time_difference(&original_start, &original_finish, &original_difference);
+    printf("Execution time of Original Algorithm %lld ns or %9.5lf s\n", original_difference, original_difference / 1000000000.0);
     return 0;
 }
 int matMul_Improved()
 {
-    struct timespec start, finish;
-    long long int difference;
+    struct timespec improverd_start, improverd_finish;
+    long long int improverd_difference;
 
     //These M,N and P defines row and column of matrices.
     //Update this value to change the size of matrices to be computed.
@@ -152,7 +152,8 @@ int matMul_Improved()
     // }
 
     //Calculates time for computing and prining the value only
-    clock_gettime(CLOCK_MONOTONIC, &start);
+    clock_gettime(CLOCK_MONOTONIC, &improverd_start);
+    //Defining cache variable
     int cache;
     for (i = 0; i < N; i++)
     {
@@ -161,19 +162,9 @@ int matMul_Improved()
             cache = 0;
             for (k = 0; k < P; k++)
             {
-                //c[i][j] = c[i][j] + a[i][k] * b[k][j];
                 cache = cache + a[i][k] * b[k][j];
             }
             c[i][j] = cache;
-            // printf("\nThe results is…\n");
-            // for (int p = 0; p < N; p++)
-            // {
-            //     for (int q = 0; q < M; q++)
-            //     {
-            //         printf("%d  ", c[p][q]);
-            //     }
-            //     printf("\n");
-            //}
         }
     }
     //Uncomment lines bleow to print the value of matrix A and B
@@ -198,6 +189,7 @@ int matMul_Improved()
     // }
 
     //Prints the final resultant matrix after multiplication
+    //Uncomment Lines below to print result
     // printf("\nThe results is…\n");
     // for (i = 0; i < N; i++)
     // {
@@ -208,15 +200,17 @@ int matMul_Improved()
     //     printf("\n");
     // }
 
-    clock_gettime(CLOCK_MONOTONIC, &finish);
-    time_difference(&start, &finish, &difference);
-    printf("Execution time of Improved Algrithm %lldns or %9.5lfs\n", difference, difference / 1000000000.0);
+    clock_gettime(CLOCK_MONOTONIC, &improverd_finish);
+    time_difference(&improverd_start, &improverd_finish, &improverd_difference);
+    printf("Execution time of Improved Algrithm %lld ns or %9.5lf s\n", improverd_difference, improverd_difference / 1000000000.0);
     return 0;
 }
 int main(int argc, char const *argv[])
 {
-    //matMul_Original();
-    matMul_Improved();
-
+    for (int i = 0; i < 10; i++)
+    {
+        matMul_Original();
+        matMul_Improved();
+    }
     return 0;
 }

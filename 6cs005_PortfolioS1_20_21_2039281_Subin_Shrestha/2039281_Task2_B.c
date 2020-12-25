@@ -46,7 +46,6 @@ void *mult(void *arg)
     result[p->x][p->y] = cache;
     //End Of Thread
     pthread_exit(0);
-    
 }
 
 int matMuil_multiThreading(int maxThread)
@@ -111,11 +110,9 @@ int matMuil_multiThreading(int maxThread)
     //     printf("\n\n");
     // }
 
-    //printf(" ---> Time Elapsed : %.6f Sec\n\n", (double)(time(NULL) - start));
-
     clock_gettime(CLOCK_MONOTONIC, &finish);
     time_difference(&start, &finish, &difference);
-    printf("run lasted %lldns or %9.5lfs\n", difference, difference / 1000000000.0);
+    printf("run lasted %lld ns or %9.5lf s\n", difference, difference / 1000000000.0);
 
     //Total Threads Used In Process - - - - - - - - - - - - - - - - - - - -//
 

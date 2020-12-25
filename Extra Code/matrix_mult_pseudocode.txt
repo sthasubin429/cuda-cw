@@ -1,0 +1,13 @@
+int	A[N][P],	B[P][M],	C[N][M];	
+for	(int i = 0;i < N; i++)	
+    {		
+        for	(int j = 0; j <	M; j++)
+        {	
+        int cache = 0;	
+            for	(int k = 0; k <	P; k++)	
+            {	
+                cache = cache + A[i][k] * B[k][j];	
+            }
+        c[i][j] = cache	
+    }	
+}

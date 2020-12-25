@@ -1,0 +1,40 @@
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 0 lasted 136599151840ns or 136.59915s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 1 lasted 136511362064ns or 136.51136s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 2 lasted 136509651060ns or 136.50965s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 3 lasted 136569376372ns or 136.56938s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 4 lasted 136480268412ns or 136.48027s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 5 lasted 136454250380ns or 136.45425s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 6 lasted 136474244800ns or 136.47424s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 7 lasted 136465016901ns or 136.46502s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 8 lasted 136461918723ns or 136.46192s
+##############################################
+#73121   BCD20 $6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1
+73121 solutions explored
+run no 9 lasted 136466056986ns or 136.46606s
+##############################################

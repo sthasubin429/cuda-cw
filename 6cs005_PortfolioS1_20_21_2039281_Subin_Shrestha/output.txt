@@ -1,0 +1,4 @@
+#19721   HP20 $6$AS$NVpu6KPj120Pq.DZO/W1uy/k7X6qdmpY/OaTSBsdTZ6M1JqHDBUDjwpRvbwK6ulAYm5x0jef/4uclYNi8ANd91
+19721 solutions explored
+33800 solutions explored
+run lasted 102501756000ns or 102.50176s

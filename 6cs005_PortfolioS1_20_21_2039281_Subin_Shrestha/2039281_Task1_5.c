@@ -1,3 +1,9 @@
+/*
+To Compile:
+    cc -o task1_5 2039281_Task1_5.c
+To Run:
+    ./task1_5
+*/
 #include <stdio.h>
 int main(int argc, char const *argv[])
 {
