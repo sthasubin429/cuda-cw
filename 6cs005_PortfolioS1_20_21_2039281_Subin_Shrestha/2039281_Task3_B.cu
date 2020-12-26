@@ -1,5 +1,3 @@
-// nvcc 2039281_Task3_B.cu lodepng.cpp -o task3_B 
-// ./task3_B hck.png
 /*
 To Compile:
     nvcc 2039281_Task3_B.cu lodepng.cpp -o task3_B 
