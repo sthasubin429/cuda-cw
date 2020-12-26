@@ -1,0 +1,30 @@
+Image width = 464 height = 108
+run no 0 lasted 77253400ns or   0.07725s
+##############################################
+Image width = 464 height = 108
+run no 1 lasted 51973100ns or   0.05197s
+##############################################
+Image width = 464 height = 108
+run no 2 lasted 52055800ns or   0.05206s
+##############################################
+Image width = 464 height = 108
+run no 3 lasted 45557500ns or   0.04556s
+##############################################
+Image width = 464 height = 108
+run no 4 lasted 47055900ns or   0.04706s
+##############################################
+Image width = 464 height = 108
+run no 5 lasted 46211800ns or   0.04621s
+##############################################
+Image width = 464 height = 108
+run no 6 lasted 47073800ns or   0.04707s
+##############################################
+Image width = 464 height = 108
+run no 7 lasted 48219300ns or   0.04822s
+##############################################
+Image width = 464 height = 108
+run no 8 lasted 46952600ns or   0.04695s
+##############################################
+Image width = 464 height = 108
+run no 9 lasted 46812400ns or   0.04681s
+##############################################

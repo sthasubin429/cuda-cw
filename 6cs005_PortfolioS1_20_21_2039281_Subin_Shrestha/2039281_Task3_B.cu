@@ -1,5 +1,5 @@
-//nvcc 2039281_Task3_B.cu lodepng.cpp -o task3_B 
-//task3_B hck.png
+// nvcc 2039281_Task3_B.cu lodepng.cpp -o task3_B 
+// ./task3_B hck.png
 #include "lodepng.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -146,7 +146,7 @@ int main(int argc, char **argv){
     unsigned int w;
     unsigned int h;
     const char* filename = argv[1];
-    const char* img_output = "generated.png";
+    const char* img_output = "bluredImage.png";
     unsigned char* output_raw;
     cudaError_t error;
     
