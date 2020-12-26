@@ -1,24 +1,28 @@
+/*
+To Compile:
+    cc -o task2_C_3 2039281_Task2_C_3.c -lcrypt
+
+To Run:
+    ./task2_C_3
+
+To Record Output:
+    ./task2_C_3 > task2_C_3_output.txt
+*/
+
+/*****************************************************
+ BY Subin Shrestha
+ ID 2039281 
+
+--Modified code to crack code with 3 letters and 2 numbers
+--Letters are all uppercase letters.
+--Loops over all the possible solutions and compares each encryptions.
+******************************************************/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <crypt.h>
 #include <time.h>
 #include <unistd.h>
-
-/******************************************************************************
-  Demonstrates how to crack an encrypted password using a simple
-  "brute force" algorithm. Works on passwords that consist only of 2 uppercase
-  letters and a 2 digit integer.
-
-  Compile with:
-    cc -o task2_C_3 2039281_Task2_C_3.c -lcrypt
-
-  If you want to analyse the output then use the redirection operator to send
-  output to a file that you can view using an editor or the less utility:
-    ./task2_C_3 > t2_C_3_output.txt
-
-  Dr Kevan Buckley, University of Wolverhampton, 2018 Modified by Dr. Ali Safaa 2019
-******************************************************************************/
 
 int count = 0; // A counter used to track the number of combinations explored so far
 
@@ -32,6 +36,7 @@ void substr(char *dest, char *src, int start, int length)
     *(dest + length) = '\0';
 }
 
+//To calculate time
 int time_difference(struct timespec *start, struct timespec *finish,
                     long long int *difference)
 {
@@ -49,11 +54,8 @@ int time_difference(struct timespec *start, struct timespec *finish,
 }
 
 /**
- This function can crack the kind of password explained above. All combinations
- that are tried are displayed and when the password is found, #, is put at the 
- start of the line. Note that one of the most time consuming operations that 
- it performs is the output of intermediate results, so performance experiments 
- for this kind of program should not include this. i.e. comment out the printfs.
+ The function craks any password with 3 letters and numbers (E.G. HPC20). 
+ All combinaction are looped over and compared with the given encryptionn.
 */
 
 void crack(char *salt_and_encrypted)
@@ -64,6 +66,7 @@ void crack(char *salt_and_encrypted)
     char *enc;      // Pointer to the encrypted password
 
     substr(salt, salt_and_encrypted, 0, 6);
+    //3 loops for letters and 1 loop for number
     for (w = 'A'; w < 'Z'; w++)
     {
         for (x = 'A'; x <= 'Z'; x++)
@@ -78,8 +81,9 @@ void crack(char *salt_and_encrypted)
                     if (strcmp(salt_and_encrypted, enc) == 0)
                     {
                         printf("#%-8d%s %s\n", count, plain, enc);
-                        return; //uncomment this line if you want to speed-up the running time, program will find you the cracked password only without exploring all possibilites
+                        return; //Comment line to explore all possible solutions
                     }
+                    //Uncommnet lines below to print all possible solutions
                     // else{
                     //   printf("%-8d%s %s\n", count, plain, enc);
                     // }
@@ -89,6 +93,7 @@ void crack(char *salt_and_encrypted)
     }
 }
 
+//main function
 int main(int argc, char *argv[])
 {
     for (int i = 0; i < 10; i++)
@@ -98,7 +103,6 @@ int main(int argc, char *argv[])
         long long int difference;
         clock_gettime(CLOCK_MONOTONIC, &start);
 
-        //crack("$6$AS$rO24ikvdmsECaZyd.CCYw0tZbkaFSRVtP6.wo5x0YpAj0x9MM0.yUnzNyO5.7S3nL3lhe51pFAJPsiXqDUhOw."); //Copy and Paste your ecrypted password here using EncryptShA512 program
         crack("$6$AS$OIOi9C/gGpmCJBwysT46npeEFQukq.1ro0JX.RTbNW5c8Ra/jvIRtPgpFa/9A02JRI2CZFZENFPES7LkF8O4t1"); //Copy and Paste your ecrypted password here using EncryptShA512 program (BCD20)
         printf("%d solutions explored\n", count);
 

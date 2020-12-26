@@ -1,10 +1,46 @@
-// nvcc 2039281_Task3_A.cu -o task3_A
-// ./task3_A 
+/*
+To Compile:
+    nvcc 2039281_Task3_A.cu -o task3_A
+
+To Run:
+    ./task3_A
+
+
+/*****************************************************
+ BY Subin Shrestha
+ ID 2039281 
+
+--Code to crack code with 2 letters and 2 numbers E.g AA12 using CUDA
+--A Custom encryption is made to run on device
+--This program encrypts the given text using custom encryption
+--Stores the encypted text in global variable
+--Decrypts the code stored in global variable using CUDA computaion
+******************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
+//Global variable for device
 __device__ char* encText;
 
+//To calculate Time
+int time_difference(struct timespec *start, struct timespec *finish,
+                    long long int *difference)
+{
+    long long int ds = finish->tv_sec - start->tv_sec;
+    long long int dn = finish->tv_nsec - start->tv_nsec;
+
+    if (dn < 0)
+    {
+        ds--;
+        dn += 1000000000;
+    }
+    *difference = ds * 1000000000 + dn;
+
+    return !(*difference > 0);
+}
+//Custom Encryption function to run on device
 __device__ char* CudaCrypt(char* rawPassword){
 
 	char * newPassword = (char *) malloc(sizeof(char) * 11);
@@ -39,6 +75,7 @@ __device__ char* CudaCrypt(char* rawPassword){
 	return newPassword;
 }
 
+//Device function to match string
 __device__ int passwordMatch(char* currentEncText){
     char* check = currentEncText;
     char* match = encText;
@@ -52,8 +89,10 @@ __device__ int passwordMatch(char* currentEncText){
   return 0;
     
 }
+//Encrypts given plain text using custom encryption
+//Stores the encrypted text at global device variable
 __global__ void Encrypt(){
-char genRawPass[5] = "hp20";
+char genRawPass[5] = "cd20";
 encText = CudaCrypt(genRawPass);
 //firstLetter - 'a' - 'z' (26 characters)
 //secondLetter - 'a' - 'z' (26 characters)
@@ -65,6 +104,7 @@ printf("%c %c %c %c = %s\n", genRawPass[0],genRawPass[1],genRawPass[2],genRawPas
 printf("Decrypting %s using Brute Force \n", encText);
 }
 
+//Cracks the the encrypted text in global variable
 __global__ void crack(char * alphabet, char * numbers){
 
 char rawPass[5];
@@ -87,21 +127,34 @@ rawPass[4] = '\0';
 
 }
 
+//Main Function
 int main(int argc, char ** argv){
-  Encrypt<<< 1, 1 >>>();    
+      //starting clock
+      struct timespec start, finish;
+      long long int difference;
+      clock_gettime(CLOCK_MONOTONIC, &start);
 
-char cpuAlphabet[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-char cpuNumbers[26] = {'0','1','2','3','4','5','6','7','8','9'};
+	//Calls Encryption method
+    Encrypt<<< 1, 1 >>>();    
 
-char * gpuAlphabet;
-cudaMalloc( (void**) &gpuAlphabet, sizeof(char) * 26);
-cudaMemcpy(gpuAlphabet, cpuAlphabet, sizeof(char) * 26, cudaMemcpyHostToDevice);
+    char cpuAlphabet[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    char cpuNumbers[26] = {'0','1','2','3','4','5','6','7','8','9'};
 
-char * gpuNumbers;
-cudaMalloc( (void**) &gpuNumbers, sizeof(char) * 26);
-cudaMemcpy(gpuNumbers, cpuNumbers, sizeof(char) * 26, cudaMemcpyHostToDevice);
+    char * gpuAlphabet;
+    cudaMalloc( (void**) &gpuAlphabet, sizeof(char) * 26);
+    cudaMemcpy(gpuAlphabet, cpuAlphabet, sizeof(char) * 26, cudaMemcpyHostToDevice);
 
-crack<<< dim3(26,26,1), dim3(10,10,1) >>>( gpuAlphabet, gpuNumbers );
-cudaDeviceSynchronize();
+    char * gpuNumbers;
+    cudaMalloc( (void**) &gpuNumbers, sizeof(char) * 26);
+    cudaMemcpy(gpuNumbers, cpuNumbers, sizeof(char) * 26, cudaMemcpyHostToDevice);
+
+    crack<<< dim3(26,26,1), dim3(10,10,1) >>>( gpuAlphabet, gpuNumbers );
+    cudaDeviceSynchronize();
+
+    //Stopping Clock
+    clock_gettime(CLOCK_MONOTONIC, &finish);
+    time_difference(&start, &finish, &difference);
+    printf("run lasted %lldns or %9.5lfs\n", difference, difference / 1000000000.0);
+  
 return 0;
 }

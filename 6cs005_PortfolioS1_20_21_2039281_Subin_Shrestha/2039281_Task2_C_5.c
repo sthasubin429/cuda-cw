@@ -1,4 +1,24 @@
-// cc -o task2_C_5 2039281_Task2_C_5.c -lcrypt -lpthread
+/*
+To Compile:
+    cc -o task2_C_5 2039281_Task2_C_5.c -lcrypt -lpthread
+
+To Run:
+    ./task2_C_5
+
+To Record Output:
+    ./task2_C_5 > task2_C_5_output.txt
+*/
+
+/*****************************************************
+ BY Subin Shrestha
+ ID 2039281 
+
+--Code to crack code with 2 letters and 2 numbers E.g AA12 using 2 threads.
+--Two threads are created to explore twice the number of possible combinations.
+--First thread checks combinations starting from A to M.
+--Second thread checks combinations starting from N to Z.
+--Each thread encrypts the corresponding combination and compares it with the given encryption.
+******************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -8,10 +28,12 @@
 #include <time.h>
 #include <stdbool.h>
 
+//gloabl variables
 int count1 = 0;
 int count2 = 0;
 bool found = false;
 
+//To calculate time
 int time_difference(struct timespec *start, struct timespec *finish,
                     long long int *difference)
 {
@@ -28,12 +50,19 @@ int time_difference(struct timespec *start, struct timespec *finish,
     return !(*difference > 0);
 }
 
+/**
+ Required by lack of standard function in C.   
+*/
 void substr(char *dest, char *src, int start, int length)
 {
     memcpy(dest, src + start, length);
     *(dest + length) = '\0';
 }
 
+/*
+First function that cracks encryption starting from A to M
+This is run on the first thread
+*/
 void kernel_function_1(char *salt_and_encrypted)
 {
     int x, y, z;   // Loop counters
@@ -42,7 +71,7 @@ void kernel_function_1(char *salt_and_encrypted)
     char *enc;     // Pointer to the encrypted password
 
     substr(salt, salt_and_encrypted, 0, 6);
-
+    //2 loops for letters and 1 loop for number
     for (x = 'A'; x <= 'M'; x++)
     {
         for (y = 'A'; y <= 'Z'; y++)
@@ -57,12 +86,13 @@ void kernel_function_1(char *salt_and_encrypted)
                     printf("#%-8d%s %s\n", count1, plain, enc);
                     found = true;
                     pthread_exit(0);
-                    return; //uncomment this line if you want to speed-up the running time, program will find you the cracked password only without exploring all possibilites
+                    return; //Comment line to explore all possible solutions
                 }
-
+                //Uncommnet lines below to print all possible solutions
                 // else{
                 //   printf("%-8d%s %s\n", count, plain, enc);
                 // }
+                //Ends this thread if the solution is found on other thread
                 if (found)
                 {
                     printf("Solution Found \n");
@@ -74,6 +104,11 @@ void kernel_function_1(char *salt_and_encrypted)
     }
 }
 
+/*
+Second function that cracks encryption starting from N to Z
+This is run on the second thread
+*/
+
 void kernel_function_2(char *salt_and_encrypted)
 {
     int x, y, z;   // Loop counters
@@ -82,7 +117,7 @@ void kernel_function_2(char *salt_and_encrypted)
     char *enc;     // Pointer to the encrypted password
 
     substr(salt, salt_and_encrypted, 0, 6);
-
+    //2 loops for letters and 1 loop for number
     for (x = 'N'; x <= 'Z'; x++)
     {
         for (y = 'A'; y <= 'Z'; y++)
@@ -97,11 +132,13 @@ void kernel_function_2(char *salt_and_encrypted)
                     printf("#%-8d%s %s\n", count2, plain, enc);
                     found = true;
                     pthread_exit(0);
-                    return; //uncomment this line if you want to speed-up the running time, program will find you the cracked password only without exploring all possibilites
+                    return; //Comment line to explore all possible solutions
                 }
+                //Uncommnet lines below to print all possible solutions
                 // else{
                 //   printf("%-8d%s %s\n", count, plain, enc);
                 // }
+                //Ends this thread if the solution is found on other thread
                 if (found)
                 {
                     printf("Solution Found \n");

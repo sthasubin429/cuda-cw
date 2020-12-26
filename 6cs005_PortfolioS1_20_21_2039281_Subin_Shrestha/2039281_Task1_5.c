@@ -4,6 +4,10 @@ To Compile:
 To Run:
     ./task1_5
 */
+/*****************************************
+ BY Subin Shrestha
+ ID 2039281 
+ ***************************************/
 #include <stdio.h>
 int main(int argc, char const *argv[])
 {
@@ -14,10 +18,10 @@ int main(int argc, char const *argv[])
     int C = B_old + D;
 
     //The Statements below can be executed in parallel wuthout affecting the final output.
-
     int B_new = A + C;
     int B = C + D;
 
+    //Prints all the values
     printf("Final Values are: \n");
     printf("A = %d \n", A);
     printf("B_old = %d \n", B_old);

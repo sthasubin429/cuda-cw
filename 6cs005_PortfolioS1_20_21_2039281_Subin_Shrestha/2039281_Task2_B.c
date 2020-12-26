@@ -6,17 +6,31 @@ To Run:
     ./task2_B
 
 To Record Output:
-    ./task2_B > t2_B_output.txt
+    ./task2_B > task2_B_output.txt
 */
+/*****************************************************
+ BY Subin Shrestha
+ ID 2039281 
+
+--Implementation of Matrix Multiplication using multithrading.
+--Number of threads is confirugable at runtime using input.txt file.
+--Prints average run time after running the program for 10 times.
+--Threads are used to compute each row of the result matrix.
+--Say Result matrix is of size 1500 x 1500
+--1500 threads will be used to compute each row of the result matrix
+******************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <time.h>
 
+//Defining MAtrix Size
 #define matSize 1500
 
+//Defining 3 matrices A, B and result
 int A[matSize][matSize], B[matSize][matSize], result[matSize][matSize];
 
+//To calculate time
 int time_difference(struct timespec *start, struct timespec *finish,
                     long long int *difference)
 {
@@ -56,12 +70,13 @@ void *mult(void *arg)
     pthread_exit(0);
 }
 
+//method to multipy two matrices. takex max number of threads as parameters
 float matMuil_multiThreading(int maxThread)
 {
+    //To calculate time
     struct timespec start, finish;
     long long int difference;
     clock_gettime(CLOCK_MONOTONIC, &start);
-    ///////////////////////
 
     //Defining Threads
     pthread_t thread[maxThread];
@@ -72,6 +87,7 @@ float matMuil_multiThreading(int maxThread)
     //Defining p For Passing Parameters To Function As Struct
     args p[matSize];
 
+    //Creates seperate thread for each row in the output matrix
     for (int x = 0; x < matSize; x++)
     {
         //Initializing Parameters For Passing To Function
@@ -92,13 +108,13 @@ float matMuil_multiThreading(int maxThread)
 
         thread_number++;
     }
-    //Wait For All Threads Done - - - - - - - - - - - - - - - - - - - - - - //
 
+    //Wait For All Threads Done - - - - - - - - - - - - - - - - - - - - - - //
     for (int z = 0; z < (matSize); z++)
         pthread_join(thread[z], NULL);
 
     //Print Multiplied Matrix (Result) - - - - - - - - - - - - - - - - - - -//
-
+    //Uncomment lines beow to print the resut matrix
     // printf(" --- Multiplied Matrix ---\n\n");
     // for (int x = 0; x < matSize; x++)
     // {
@@ -109,7 +125,7 @@ float matMuil_multiThreading(int maxThread)
     //     printf("\n\n");
     // }
 
-    ///////////////////////////////////
+    //Stopping the clock to calculate time
     clock_gettime(CLOCK_MONOTONIC, &finish);
     time_difference(&start, &finish, &difference);
     //printf("run lasted %lldns or %9.5lfs\n", difference, difference / 1000000000.0);
@@ -120,11 +136,14 @@ float matMuil_multiThreading(int maxThread)
     // for (int z = 0; z < thread_number; z++)
     //     printf(" - Thread %d ID : %d\n", z + 1, (int)thread[z]);
 
+    //Returing time in seconds
     return difference / 1000000000.0;
 }
 
+//Main Methods
 int main(int argc, char const *argv[])
 {
+    //Takes input from file
     char c[1];
     FILE *fptr;
     int num;
@@ -141,7 +160,9 @@ int main(int argc, char const *argv[])
     printf("Number of Threads Used: %d \n", num);
     fclose(fptr);
 
+    //Defines max thread as the number in the file.
     int maxThread = num;
+
     //the values of the matrix are given random values between 0 and 70.
     //time taken to assign this value is not added to the final time.
     for (int a = 0; a < matSize; a++)
@@ -152,6 +173,7 @@ int main(int argc, char const *argv[])
             B[a][b] = rand() % 70;
         }
     }
+    //Runs matrix multiplication 10 times and gives average time taken to compute.
     float timeTaken[10];
     float sum = 0;
     for (int i = 0; i < 10; i++)

@@ -2,13 +2,25 @@
 To Compile:
     cc -o task2_A 2039281_Task2_A.c
 To Run:
-    ./task2_A > t2_A_output.txt
+    ./task2_A
+To Store Output:
+    ./task2_A > task2_A_output.txt
 */
+/*****************************************************
+ BY Subin Shrestha
+ ID 2039281 
+
+ Has original Matrix Multipication Implementation.
+ Has improved Matrix Multiplication that uses cache and decreases execution time.
+ Both function prints Total time taken to complete.
+ The main method runs both the function 10 times.
+******************************************************/
 
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 
+//To calculate Time
 int time_difference(struct timespec *start, struct timespec *finish,
                     long long int *difference)
 {
@@ -26,6 +38,7 @@ int time_difference(struct timespec *start, struct timespec *finish,
 }
 int matMul_Original()
 {
+    //Varibles to calculate time
     struct timespec original_start, original_finish;
     long long int original_difference;
 
@@ -106,6 +119,7 @@ int matMul_Original()
     //     printf("\n");
     // }
 
+    //Calulating End Time
     clock_gettime(CLOCK_MONOTONIC, &original_finish);
     time_difference(&original_start, &original_finish, &original_difference);
     printf("Execution time of Original Algorithm %lld ns or %9.5lf s\n", original_difference, original_difference / 1000000000.0);
@@ -113,6 +127,7 @@ int matMul_Original()
 }
 int matMul_Improved()
 {
+    //Variables to caculate time
     struct timespec improverd_start, improverd_finish;
     long long int improverd_difference;
 
@@ -195,6 +210,7 @@ int matMul_Improved()
     //     printf("\n");
     // }
 
+    //Stopping time to calculate time
     clock_gettime(CLOCK_MONOTONIC, &improverd_finish);
     time_difference(&improverd_start, &improverd_finish, &improverd_difference);
     printf("Execution time of Improved Algrithm %lld ns or %9.5lf s\n", improverd_difference, improverd_difference / 1000000000.0);
